@@ -20,9 +20,13 @@ pipeline {
                         'python',
                         'py -3',
                         'py',
+                        '"C:\\Program Files\\Python313\\python.exe"',
                         '"C:\\Program Files\\Python312\\python.exe"',
                         '"C:\\Program Files\\Python311\\python.exe"',
                         '"C:\\Program Files\\Python310\\python.exe"',
+                        '"C:\\Users\\realm\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"',
+                        '"C:\\Users\\realm\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"',
+                        '"C:\\Users\\realm\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"',
                         '"C:\\Users\\mohit\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"',
                         '"C:\\Users\\mohit\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"'
                     ]
