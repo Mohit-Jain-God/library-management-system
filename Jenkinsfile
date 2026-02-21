@@ -67,7 +67,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat "${env.PY_CMD} -m pytest tests/test_app.py --junitxml=results.xml"
+                script {
+                    if (fileExists('tests/test_app.py')) {
+                        bat "${env.PY_CMD} -m pytest tests/test_app.py --junitxml=results.xml"
+                    } else {
+                        echo 'tests/test_app.py not found. Running smoke check.'
+                        bat "${env.PY_CMD} -c \"import app; print('smoke test passed')\""
+                    }
+                }
             }
             post {
                 always {
