@@ -15,20 +15,20 @@ pipeline {
 
         stage('Install') {
             steps {
-                bat 'python -m pip install --upgrade pip'
-                bat 'pip install -r requirements.txt'
+                bat 'py -m pip install --upgrade pip'
+                bat 'py -m pip install -r requirements.txt'
             }
         }
 
         stage('Lint') {
             steps {
-                bat 'flake8 .'
+                bat 'py -m flake8 .'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'pytest tests/test_app.py --junitxml=results.xml'
+                bat 'py -m pytest tests/test_app.py --junitxml=results.xml'
             }
             post {
                 always {
