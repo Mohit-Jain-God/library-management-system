@@ -9,17 +9,17 @@ node {
 
         stage('Install Dependencies') {
             bat '''
-                python -m pip install --upgrade pip
-                pip install -r requirements.txt
+                py -m pip install --upgrade pip
+                py -m pip install -r requirements.txt
             '''
         }
 
         stage('Lint') {
-            bat 'flake8 .'
+            bat 'py -m flake8 .'
         }
 
         stage('Test') {
-            bat 'pytest tests/test_app.py --junitxml=results.xml'
+            bat 'py -m pytest tests/test_app.py --junitxml=results.xml'
         }
 
         currentBuild.result = 'SUCCESS'
