@@ -1,0 +1,34 @@
+node {
+    env.FLASK_APP = 'app.py'
+    env.FLASK_ENV = 'development'
+
+    try {
+        stage('Checkout') {
+            checkout scm
+        }
+
+        stage('Install Dependencies') {
+            bat '''
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+            '''
+        }
+
+        stage('Lint') {
+            bat 'flake8 .'
+        }
+
+        stage('Test') {
+            bat 'pytest tests/test_app.py --junitxml=results.xml'
+        }
+
+        currentBuild.result = 'SUCCESS'
+        echo 'Build passed'
+    } catch (err) {
+        currentBuild.result = 'FAILURE'
+        echo 'Build failed'
+        throw err
+    } finally {
+        junit allowEmptyResults: true, testResults: 'results.xml'
+    }
+}
