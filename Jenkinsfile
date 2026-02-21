@@ -54,6 +54,7 @@ pipeline {
             steps {
                 bat "${env.PY_CMD} -m pip install --upgrade pip"
                 bat "${env.PY_CMD} -m pip install -r requirements.txt"
+                bat "${env.PY_CMD} -m pip install flake8 pytest"
             }
         }
 

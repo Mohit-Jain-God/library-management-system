@@ -45,6 +45,7 @@ node {
             bat '''
                 %PY_CMD% -m pip install --upgrade pip
                 %PY_CMD% -m pip install -r requirements.txt
+                %PY_CMD% -m pip install flake8 pytest
             '''
         }
 
